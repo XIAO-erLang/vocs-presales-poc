@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f7f8f5;
+  color: #17211f;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .panel {
+    @apply rounded-panel border border-line bg-paper shadow-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-md bg-leaf px-5 py-2.5 text-sm font-bold text-white transition hover:bg-leaf-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-md border border-line bg-white px-5 py-2.5 text-sm font-bold text-leaf-dark transition hover:border-leaf;
+  }
+
+  .eyebrow {
+    @apply text-sm font-extrabold text-leaf;
+  }
+}
