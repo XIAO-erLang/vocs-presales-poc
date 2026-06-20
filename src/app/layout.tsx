@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VOCs 废气治理售前助手",
+  title: "环保售前平台 | VOCs 废气治理售前助手",
   description:
-    "把客户说不清需求、现场参数不完整、报价前不知道怎么问，整理成可沟通的工况信息、风险提示和初步方案框架。"
+    "面向环保销售、工程师、环保公司负责人和企业甲方的轻量售前平台，提供计算工具、标准模板、初步方案生成、工程师对接和优质供应商专栏。"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

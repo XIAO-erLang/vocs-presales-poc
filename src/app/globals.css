@@ -11,8 +11,8 @@ html {
 }
 
 body {
-  background: #f7f8f5;
-  color: #17211f;
+  background: #f5f7fa;
+  color: #14202b;
 }
 
 button,
@@ -32,14 +32,14 @@ textarea {
   }
 
   .btn-primary {
-    @apply inline-flex min-h-11 items-center justify-center rounded-md bg-leaf px-5 py-2.5 text-sm font-bold text-white transition hover:bg-leaf-dark;
+    @apply inline-flex min-h-11 items-center justify-center rounded-md bg-leaf-dark px-5 py-2.5 text-sm font-bold text-white transition hover:bg-steel;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-11 items-center justify-center rounded-md border border-line bg-white px-5 py-2.5 text-sm font-bold text-leaf-dark transition hover:border-leaf;
+    @apply inline-flex min-h-11 items-center justify-center rounded-md border border-line bg-white px-5 py-2.5 text-sm font-bold text-leaf-dark transition hover:border-steel hover:text-steel;
   }
 
   .eyebrow {
-    @apply text-sm font-extrabold text-leaf;
+    @apply text-sm font-extrabold text-steel;
   }
 }

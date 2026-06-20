@@ -1,142 +1,112 @@
-# VOCs 废气治理售前助手 POC v0.2
+# 环保售前工具与初步方案平台 POC v0.3
 
-## 项目定位
+## 当前版本定位
 
-轻量网页 POC，用于验证用户是否愿意：
+本项目从单一 `VOCs 废气治理售前助手` 升级为环保售前平台骨架。
 
-1. 点击进入；
-2. 完成身份/需求分流；
-3. 查看样张；
-4. 留下联系方式；
-5. 表达付费或人工复核意向。
+平台面向环保销售、环保工程师、环保公司负责人、企业甲方和供应商，提供环保项目前期沟通、工况整理、计算工具、标准模板、初步方案框架、工程师对接和供应商资料展示服务。
 
-网站名称暂定：
+当前版本目标不是完整商业系统，而是先搭好五大板块结构，让用户进入网站后能理解平台未来提供哪些服务，并且每个板块都有可点击、可展示、可继续扩展的页面骨架。
 
-```text
-VOCs 废气治理售前助手
-```
+## 五大板块
 
-核心价值：
+1. 计算工具：风量换算、管道风速、活性炭用量、停留时间、喷淋塔液气比、风机功率等售前估算工具。
+2. 标准模板：工况采集表、现场勘查清单、报价前风险提示、客户沟通问题库、初步方案 Word 模板目录等。
+3. 初步方案框架生成：根据工况参数生成售前沟通用方案框架和风险提示。
+4. 工程师对接：用于复杂项目、方案复核、设备选型疑问和报价复核。
+5. 优质供应商专栏：展示经过平台初步审核的环保设备、材料耗材、安装运维和检测服务供应商资料。
 
-```text
-把“客户说不清需求、现场参数不完整、报价前不知道怎么问”整理成可沟通的工况信息、风险提示和初步方案框架。
-```
+## 当前边界
 
-## 项目结构
+本平台内容仅用于售前初步判断、学习参考和内部沟通，不替代正式工程设计、施工图、检测验收或达标承诺。
 
-```text
-2026-06-18_VOCs网页入口POC_Next_v0.2/
-├─ package.json
-├─ next.config.mjs
-├─ tailwind.config.ts
-├─ postcss.config.mjs
-├─ tsconfig.json
-├─ src/
-│  ├─ app/
-│  │  ├─ api/leads/route.ts
-│  │  ├─ flow/page.tsx
-│  │  ├─ intent/page.tsx
-│  │  ├─ result/page.tsx
-│  │  ├─ samples/page.tsx
-│  │  ├─ globals.css
-│  │  ├─ layout.tsx
-│  │  └─ page.tsx
-│  ├─ components/
-│  │  ├─ BoundaryNote.tsx
-│  │  ├─ Header.tsx
-│  │  ├─ LeadForm.tsx
-│  │  ├─ ResultCard.tsx
-│  │  └─ SectionTitle.tsx
-│  └─ lib/
-│     ├─ data.ts
-│     ├─ results.ts
-│     └─ types.ts
-```
+当前版本不做：
 
-## 页面路由设计
+- 真实支付
+- 真实数据库保存
+- 真实邮件发送
+- 用户登录
+- 用户后台
+- 附件上传
+- 真实工程师分账
+- 真实供应商广告投放
 
-| 路由 | 页面 | 目标 |
+`/intent` 已改为邮件咨询页，通过 `mailto:` 打开用户自己的邮件客户端，不再用网页表单保存用户信息。
+
+## 路由列表
+
+| 路由 | 页面 | 说明 |
 | --- | --- | --- |
-| `/` | 首页 | 说明定位、痛点、边界，提供主按钮和样张入口 |
-| `/flow` | 身份/需求分流页 | 收集 4 个轻量选择题 |
-| `/result` | 分流结果页 | 根据身份和需求展示推荐资料包 |
-| `/samples` | 样张展示页 | 展示部分样张，不展示完整资料 |
-| `/intent` | 留资/付费意向页 | 收集联系方式和意向，第一版 mock 保存 |
+| `/` | 首页 | 五大板块入口、推荐路径、边界提示 |
+| `/flow` | VOCs 分流页 | 保留原 VOCs POC 分流体验 |
+| `/result` | 分流结果页 | 保留原推荐结果 |
+| `/samples` | 样张展示页 | 保留原资料样张 |
+| `/intent` | 邮件咨询页 | 免费邮件初筛，使用 `mailto:` |
+| `/tools` | 计算工具列表 | 展示六个工具卡片 |
+| `/tools/[slug]` | 计算工具详情 | 工具说明、输入占位、结果占位 |
+| `/templates` | 标准模板列表 | 展示六个模板卡片 |
+| `/templates/[slug]` | 标准模板详情 | 预览、完整版本说明、邮件咨询 |
+| `/plans` | 初步方案框架生成 | 工况参数表单占位、目录预览 |
+| `/plans/result` | mock 方案结果 | 初步方案目录、风险提示、缺失信息 |
+| `/engineers` | 工程师列表 | 示例工程师卡片和对接说明 |
+| `/engineers/[slug]` | 工程师详情 | 擅长领域、服务、边界、价格 |
+| `/engineers/[slug]/request` | 工程师对接申请 | mock 申请表和流程说明 |
+| `/suppliers` | 供应商专栏 | 分类、示例供应商、入驻入口 |
+| `/suppliers/[slug]` | 供应商详情 | 产品能力、适用场景、谨慎场景 |
+| `/suppliers/join` | 供应商入驻申请 | 邮件申请模板和 `mailto:` |
+| `/api/leads` | mock API | 旧 POC mock API，当前前台主流程不依赖 |
 
-边界声明不单独成页，放在首页、样张页和留资页底部。
+## Mock 数据文件
 
-## 组件拆分
+```text
+src/lib/tools.ts
+src/lib/templates.ts
+src/lib/plans.ts
+src/lib/engineers.ts
+src/lib/suppliers.ts
+src/lib/pricing.ts
+src/lib/platform.ts
+src/lib/data.ts
+src/lib/results.ts
+src/lib/types.ts
+```
 
-| 组件 | 用途 |
-| --- | --- |
-| `Header` | 顶部导航 |
-| `BoundaryNote` | 工程责任边界提示 |
-| `SectionTitle` | 统一区块标题 |
-| `ResultCard` | 分流结果展示 |
-| `LeadForm` | 留资与付费意向表单 |
+## 技术栈
 
-## 数据结构
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Vercel 部署
 
-核心类型位于 `src/lib/types.ts`：
-
-- `Role`：用户身份
-- `Need`：当前需求
-- `ProjectStatus`：是否有真实项目
-- `NextAction`：下一步意向
-- `LeadPayload`：留资提交数据
-
-基础数据位于 `src/lib/data.ts`：
-
-- 身份选项
-- 需求选项
-- 项目状态选项
-- 下一步选项
-- 样张内容
-- 首页痛点
-
-结果映射位于 `src/lib/results.ts`：
-
-- 根据身份输出推荐资料包文案；
-- 后续可扩展为同时结合身份、需求、是否有真实项目生成更细推荐。
-
-## 可运行方式
+## 本地运行
 
 ```bash
 npm install
 npm run dev
 ```
 
-如果当前电脑没有依赖缓存，`npm install` 需要联网。
+## 构建
 
-当前 Codex 执行环境曾对隐藏目录 `.next` 写入受限。Vercel 部署不需要这个本地 workaround；项目默认使用 Next.js 标准构建目录。
+```bash
+npm run build
+```
 
-如本机仍遇到 `.next` 写入限制，可以临时设置：
+如果本机遇到 `.next` 写入权限问题，可临时使用：
 
 ```powershell
 $env:NEXT_USE_LOCAL_DIST_DIR='1'
 npm.cmd run build
 ```
 
-这会让本地构建输出到 `next-build`，但 Vercel 不需要设置该变量。
+Vercel 不需要设置 `NEXT_USE_LOCAL_DIST_DIR`，保持默认构建即可。
 
-## Supabase TODO
+## 后续 TODO
 
-第一版留资提交写入 `/api/leads`，当前只 `console.log` 并返回 mock 成功。
+1. 为计算工具补真实公式和工程边界。
+2. 将标准模板拆成更完整的预览和付费版本说明。
+3. 为 `/plans` 增加更真实的表单状态和 mock 生成逻辑。
+4. 为工程师对接补状态流转和邮件内容预览。
+5. 为供应商专栏补更严格的审核标准和入驻资料校验。
+6. 如开始真实收集线索，再接 Supabase 或其他数据库。
+7. 如开始真实收费，再接支付、订单、发票和退款流程。
 
-后续接 Supabase 时：
-
-1. 安装 `@supabase/supabase-js`。
-2. 新增环境变量：
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-3. 建表 `leads`：
-   - `id`
-   - `name`
-   - `contact`
-   - `role`
-   - `hasProject`
-   - `desiredContent`
-   - `intent`
-   - `message`
-   - `created_at`
-4. 在 `src/app/api/leads/route.ts` 中替换 mock 保存逻辑。
