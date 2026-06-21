@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { PaymentBoundary } from "@/components/payment/PaymentBoundary";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { createMockOrderId, getProductForCheckout, normalizeCheckoutType } from "@/lib/payment/catalog";
 import { formatMoney } from "@/lib/payment/repository";
 
@@ -22,7 +23,7 @@ export default async function CheckoutCreatePage({ searchParams }: { searchParam
         <p className="eyebrow mt-6 mb-3">统一 checkout</p>
         <h1 className="text-4xl font-black leading-tight">创建 mock 订单</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">
-          当前使用统一订单入口，根据 query 参数识别购买对象。第一阶段只创建 mock 订单，不接真实支付商户。
+          源解当前使用统一订单入口，根据 query 参数识别购买对象。第一阶段只创建 mock 订单，不接真实支付商户。
         </p>
 
         {product ? (
@@ -39,6 +40,9 @@ export default async function CheckoutCreatePage({ searchParams }: { searchParam
                   </li>
                 ))}
               </ul>
+              <div className="mt-5 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
+                本次购买对应的是工具、模板、方案框架或首次对接协助等效率服务与工程知识资产，不代表正式工程设计或工程履约。
+              </div>
               <Link className="btn-primary mt-6" href={`/checkout/${createMockOrderId(product.productType, product.productSlug)}`}>
                 创建并确认订单
               </Link>
@@ -53,6 +57,7 @@ export default async function CheckoutCreatePage({ searchParams }: { searchParam
                 </div>
               </section>
               <PaymentBoundary productType={product.productType} />
+              <PlatformBoundaryStatement compact />
             </div>
           </div>
         ) : (

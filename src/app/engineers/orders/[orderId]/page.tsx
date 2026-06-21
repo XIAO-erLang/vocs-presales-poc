@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { DeliveryPreview } from "@/components/payment/DeliveryPreview";
 import { OrderSummary } from "@/components/payment/OrderSummary";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { engineerStatusLabels, getDeliveryPreview, getEngineerOrderForOrder, getOrderById } from "@/lib/payment/repository";
 
 const flowSteps = [
@@ -14,7 +15,7 @@ const flowSteps = [
   "24 小时内仍无人接单，进入退款处理状态。",
   "工程师接单后，系统通过邮件建立客户、工程师、平台三方对接。",
   "客户确认完成，或对接后 72 小时内无异议，订单完成。",
-  "有效对接完成后，工程师获得 29 元，平台保留 100 元。"
+  "首次有效对接完成后，平台按合作规则处理服务报酬；后续深度服务由客户与工程师自行协商。"
 ];
 
 export default async function EngineerOrderPage({ params }: { params: Promise<{ orderId: string }> }) {
@@ -37,7 +38,7 @@ export default async function EngineerOrderPage({ params }: { params: Promise<{ 
         <p className="eyebrow mt-6 mb-3">工程师对接订单</p>
         <h1 className="text-4xl font-black leading-tight">工程师接单流程 mock</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">
-          当前页面用于验证工程师对接订单状态、候选工程师替换确认和三方邮件对接预览，不做真实邮件或分账。
+          当前页面用于验证源解工程师对接订单状态、候选工程师替换确认和三方邮件对接预览，不做真实邮件或分账。
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_380px]">
@@ -66,6 +67,7 @@ export default async function EngineerOrderPage({ params }: { params: Promise<{ 
               </div>
             </section>
             <DeliveryPreview title={delivery.title} rows={delivery.rows} />
+            <PlatformBoundaryStatement compact />
           </div>
           <aside className="panel p-5">
             <h2 className="text-xl font-black">流程节点</h2>

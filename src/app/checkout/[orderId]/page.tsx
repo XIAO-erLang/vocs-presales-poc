@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { OrderSummary } from "@/components/payment/OrderSummary";
 import { PaymentBoundary } from "@/components/payment/PaymentBoundary";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { getPaymentSessionForOrder, getOrderById } from "@/lib/payment/repository";
 
 export default async function CheckoutOrderPage({ params }: { params: Promise<{ orderId: string }> }) {
@@ -25,7 +26,7 @@ export default async function CheckoutOrderPage({ params }: { params: Promise<{ 
         <p className="eyebrow mt-6 mb-3">订单确认</p>
         <h1 className="text-4xl font-black leading-tight">确认购买内容</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">
-          这里展示未来真实支付前的订单确认页。当前邮箱和称呼为 UI mock，后续接登录或 Supabase 后会真实保存。
+          这里展示源解未来真实支付前的订单确认页。当前邮箱和称呼为 UI mock，后续接登录或 Supabase 后会真实保存。
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
@@ -46,6 +47,9 @@ export default async function CheckoutOrderPage({ params }: { params: Promise<{ 
               <p className="mt-3 text-sm leading-6 text-muted">
                 第一版不会真实保存表单。真实上线时，这里会创建订单、绑定客户邮箱并进入真实 payment session。
               </p>
+              <p className="mt-3 rounded-md border border-line bg-hint p-3 text-sm leading-6 text-ink">
+                订单对应的是效率服务费或工程知识资产费。后续深度服务、正式图纸、现场服务、施工调试等由客户与服务方另行确认。
+              </p>
             </section>
           </div>
           <aside className="grid gap-4">
@@ -58,6 +62,7 @@ export default async function CheckoutOrderPage({ params }: { params: Promise<{ 
               </Link>
             </section>
             <PaymentBoundary productType={order.productType} />
+            <PlatformBoundaryStatement compact />
           </aside>
         </div>
       </main>

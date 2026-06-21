@@ -23,7 +23,7 @@ export const engineers: Engineer[] = [
     suitableFor: ["已有检测报告但不确定工艺", "报价前需要确认风险", "客户要求解释路线差异"],
     notSuitableFor: ["正式施工图设计", "达标承诺", "没有任何工况信息的项目"],
     price: "129 元 / 次",
-    revenueShare: "工程师完成有效对接后获得 29 元，平台保留 100 元。",
+    revenueShare: "工程师可获得项目首次对接服务报酬，具体合作规则以后续确认版本为准。源解不抽后续深度服务大单。",
     status: "示例工程师"
   },
   {
@@ -36,7 +36,7 @@ export const engineers: Engineer[] = [
     suitableFor: ["不知道废气从哪里下手", "臭气与 VOCs 难区分", "现场收集系统不完整"],
     notSuitableFor: ["嗅辨检测报告出具", "环保验收结论", "政府申报材料"],
     price: "129 元 / 次",
-    revenueShare: "工程师完成有效对接后获得 29 元，平台保留 100 元。",
+    revenueShare: "工程师可获得项目首次对接服务报酬，具体合作规则以后续确认版本为准。源解不抽后续深度服务大单。",
     status: "示例工程师"
   },
   {
@@ -49,7 +49,7 @@ export const engineers: Engineer[] = [
     suitableFor: ["废气含尘或油雾", "担心活性炭堵塞", "喷淋和过滤段不确定"],
     notSuitableFor: ["粉尘爆炸安全评价", "消防专项设计", "职业卫生评价"],
     price: "129 元 / 次",
-    revenueShare: "工程师完成有效对接后获得 29 元，平台保留 100 元。",
+    revenueShare: "工程师可获得项目首次对接服务报酬，具体合作规则以后续确认版本为准。源解不抽后续深度服务大单。",
     status: "示例工程师"
   },
   {
@@ -62,7 +62,7 @@ export const engineers: Engineer[] = [
     suitableFor: ["现场味道大但收集差", "风量和管径不匹配", "风机功率不确定"],
     notSuitableFor: ["正式暖通施工图", "结构荷载复核", "消防排烟设计"],
     price: "129 元 / 次",
-    revenueShare: "工程师完成有效对接后获得 29 元，平台保留 100 元。",
+    revenueShare: "工程师可获得项目首次对接服务报酬，具体合作规则以后续确认版本为准。源解不抽后续深度服务大单。",
     status: "示例工程师"
   }
 ];

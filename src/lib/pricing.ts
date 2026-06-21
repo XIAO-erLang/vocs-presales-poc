@@ -11,8 +11,8 @@ export const pricingItems = [
 
 export const engineerRevenueShare = {
   customerPays: "129 元",
-  engineerGets: "29 元",
-  platformKeeps: "100 元"
+  engineerGets: "按合作规则确认",
+  platformKeeps: "平台收取首次对接相关效率服务费，不抽后续工程大单"
 };
 
 export function buildMailto(subject: string, body: string) {

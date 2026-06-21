@@ -10,9 +10,9 @@ export default function SuppliersPage() {
       <Header />
       <main className="container-page py-10">
         <SectionTitle
-          eyebrow="优质供应商专栏"
+          eyebrow="优质供应商资料库"
           title="先展示资料完整、边界清楚的供应商"
-          description="“优质”指资料完整、产品能力清晰、案例信息可核验、服务边界明确，并通过平台初步审核；不代表平台对具体项目效果作出承诺。"
+          description="源解供应商资料库不是广告位，不是谁付费谁展示。“优质”指资料完整、产品能力清晰、案例信息可核验、服务边界明确，并通过平台初步审核；不代表平台对具体项目效果作出承诺。"
         />
         <div className="mb-6 flex flex-wrap gap-2">
           {supplierCategories.map((category) => (
@@ -50,7 +50,7 @@ export default function SuppliersPage() {
               <p className="mt-1 text-sm text-muted">如果没有合适供应商，宁可暂时空着，也不随便展示低质量资料。</p>
             </div>
             <Link className="btn-primary" href="/suppliers/join">
-              申请进入供应商专栏
+              申请进入资料库
             </Link>
           </div>
         </section>

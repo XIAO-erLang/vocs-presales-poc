@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BoundaryNote } from "@/components/BoundaryNote";
 import { Header } from "@/components/Header";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { engineers, getEngineer } from "@/lib/engineers";
 
 const requiredFields = ["客户称呼", "客户邮箱", "项目地区", "客户身份", "项目类型", "当前阶段", "希望工程师解决的问题", "是否已有方案或报价"];
@@ -53,14 +54,17 @@ export default async function EngineerRequestPage({ params }: { params: Promise<
         <section className="panel mt-6 p-5">
           <h2 className="text-xl font-black">对接流程</h2>
           <ol className="mt-4 grid gap-2 text-sm leading-6 text-muted">
-            {["客户选择工程师", "支付 129 元对接费，当前仅占位", "工程师 30 分钟优先接单", "未响应时通知同领域候选工程师", "客户确认是否更换接单工程师", "最长等待 24 小时", "接单后通过三方邮件对接", "完成后进入模拟分账说明"].map((step, index) => (
+            {["客户选择工程师", "支付 129 元对接费，当前仅占位", "工程师 30 分钟优先接单", "未响应时通知同领域候选工程师", "客户确认是否更换接单工程师", "最长等待 24 小时", "接单后通过三方邮件对接", "完成后进入收益边界说明"].map((step, index) => (
               <li key={step}>{index + 1}. {step}</li>
             ))}
           </ol>
           <div className="mt-5 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
-            129 元为平台协助发起一次工程师项目对接的服务费用。工程师完成有效对接后获得 29 元，平台保留 100 元。
+            129 元为平台协助发起一次工程师项目对接的服务费用。后续深度服务由客户与工程师自行确认范围、费用、周期和责任边界，源解不抽后续工程大单。
           </div>
         </section>
+        <div className="mt-8">
+          <PlatformBoundaryStatement compact />
+        </div>
         <div className="mt-8">
           <BoundaryNote />
         </div>

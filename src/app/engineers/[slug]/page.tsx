@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BoundaryNote } from "@/components/BoundaryNote";
 import { Header } from "@/components/Header";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { engineers, getEngineer } from "@/lib/engineers";
 
 export function generateStaticParams() {
@@ -33,7 +34,7 @@ export default async function EngineerDetailPage({ params }: { params: Promise<{
             <h2 className="text-lg font-black">对接价格</h2>
             <p className="mt-4 text-2xl font-black">129 元 / 次</p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              工程师完成有效对接后获得 29 元，平台保留 100 元。第一版不做真实分账。
+              公开页面不写死具体分成比例。后续深度服务由客户与工程师自行协商，源解不抽后续工程大单。
             </p>
           </section>
         </div>
@@ -53,6 +54,9 @@ export default async function EngineerDetailPage({ params }: { params: Promise<{
             ))}
           </ol>
         </section>
+        <div className="mt-8">
+          <PlatformBoundaryStatement compact />
+        </div>
         <div className="mt-8">
           <BoundaryNote />
         </div>

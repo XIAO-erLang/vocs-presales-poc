@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { DeliveryPreview } from "@/components/payment/DeliveryPreview";
 import { OrderSummary } from "@/components/payment/OrderSummary";
 import { PaymentBoundary } from "@/components/payment/PaymentBoundary";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { getDeliveryPreview, getEntitlementForOrder, getOrderById } from "@/lib/payment/repository";
 import type { OrderStatus } from "@/lib/payment/types";
 
@@ -41,6 +42,7 @@ export default async function OrderDetailPage({
           <div className="grid gap-6">
             <OrderSummary order={order} />
             <DeliveryPreview title={delivery.title} rows={delivery.rows} />
+            <PlatformBoundaryStatement compact />
           </div>
           <aside className="grid gap-4">
             <section className="panel p-5">

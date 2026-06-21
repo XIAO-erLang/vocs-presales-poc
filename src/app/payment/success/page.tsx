@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { DeliveryPreview } from "@/components/payment/DeliveryPreview";
 import { OrderSummary } from "@/components/payment/OrderSummary";
+import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { getDeliveryPreview, getEntitlementForOrder, getOrderById } from "@/lib/payment/repository";
 
 type PaymentResultSearchParams = Promise<{ orderId?: string }>;
@@ -19,7 +20,7 @@ export default async function PaymentSuccessPage({ searchParams }: { searchParam
         <p className="eyebrow mb-3">支付成功</p>
         <h1 className="text-4xl font-black leading-tight">权益已 mock 开通</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">
-          当前为模拟支付成功页。真实支付上线后，成功状态应由 webhook 验签后写入数据库，再触发权益和交付。
+          当前为源解模拟支付成功页。真实支付上线后，成功状态应由 webhook 验签后写入数据库，再触发权益和交付。
         </p>
 
         {order && entitlement && delivery ? (
@@ -27,6 +28,7 @@ export default async function PaymentSuccessPage({ searchParams }: { searchParam
             <div className="grid gap-6">
               <OrderSummary order={order} />
               <DeliveryPreview title={delivery.title} rows={delivery.rows} />
+              <PlatformBoundaryStatement compact />
             </div>
             <aside className="grid gap-4">
               <section className="panel p-5">

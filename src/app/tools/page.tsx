@@ -11,7 +11,7 @@ export default function ToolsPage() {
       <main className="container-page py-10">
         <SectionTitle
           eyebrow="计算工具"
-          title="环保售前常用参数计算工具"
+          title="源解常用参数计算工具"
           description="第一版先搭工具列表和详情页结构，计算逻辑使用示例或占位，不追求工程设计精度。"
         />
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

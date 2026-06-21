@@ -2,7 +2,7 @@ import { BoundaryNote } from "@/components/BoundaryNote";
 import { Header } from "@/components/Header";
 import { buildMailto, contactEmail } from "@/lib/pricing";
 
-const consultTemplate = `你好，我想了解环保售前资料、工具、初步方案或项目对接服务。
+const consultTemplate = `你好，我想了解源解的环境工程资料、工具、方案框架或项目对接服务。
 
 我的身份：
 当前需求：
@@ -34,7 +34,7 @@ export default function IntentPage() {
               免费邮件初筛不包含完整技术方案、详细工艺路线判断、报价复核、工程设计、施工图、验收检测或达标承诺。
             </p>
             <pre className="mt-4 whitespace-pre-wrap rounded-md border border-line bg-field p-4 text-sm leading-7 text-muted">{consultTemplate}</pre>
-            <a className="btn-primary mt-5 w-full" href={buildMailto("环保售前服务免费初筛", consultTemplate)}>
+            <a className="btn-primary mt-5 w-full" href={buildMailto("源解服务免费初筛", consultTemplate)}>
               发邮件进行免费初筛
             </a>
             <p className="mt-3 text-center text-sm text-muted">收件邮箱：{contactEmail}</p>
