@@ -23,11 +23,12 @@ export default function PlanResultPage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-black text-steel">下一步</p>
-              <p className="mt-2 text-xl font-black">获取完整版本或申请工程师复核</p>
+              <p className="mt-2 text-xl font-black">购买完整初步方案或申请工程师复核</p>
+              <p className="mt-2 text-sm leading-6 text-muted">当前只展示目录和部分内容，完整方案交付为 mock 占位。</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link className="btn-primary" href="/intent">
-                邮件咨询完整版本
+              <Link className="btn-primary" href="/checkout?type=plan&slug=basic-vocs-plan">
+                购买完整初步方案
               </Link>
               <Link className="btn-secondary" href="/engineers">
                 申请工程师复核

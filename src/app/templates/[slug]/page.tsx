@@ -37,11 +37,14 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             <div>
               <p className="text-sm font-black text-steel">获取完整版本</p>
               <p className="mt-1 text-2xl font-black">{template.price}</p>
-              <p className="mt-1 text-sm text-muted">第一版不接真实支付，先通过邮件确认需求。</p>
+              <p className="mt-1 text-sm text-muted">可预览部分内容，完整版本通过 mock 订单开通访问权。</p>
             </div>
-            <Link className="btn-primary" href="/intent">
-              邮件咨询完整版本
+            <Link className="btn-primary" href={`/checkout?type=template&slug=${template.slug}`}>
+              获取完整版本
             </Link>
+          </div>
+          <div className="mt-5 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
+            购买后显示完整版下载 / 邮件发送占位。当前先做 UI，不真实发送附件。
           </div>
         </section>
 

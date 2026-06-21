@@ -31,13 +31,28 @@ export default async function EngineerDetailPage({ params }: { params: Promise<{
           <InfoPanel title="经验标签" items={engineer.tags} />
           <section className="panel p-5">
             <h2 className="text-lg font-black">对接价格</h2>
-            <p className="mt-4 text-2xl font-black">{engineer.price}</p>
-            <p className="mt-2 text-sm leading-6 text-muted">{engineer.revenueShare}</p>
+            <p className="mt-4 text-2xl font-black">129 元 / 次</p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              工程师完成有效对接后获得 29 元，平台保留 100 元。第一版不做真实分账。
+            </p>
           </section>
         </div>
-        <Link className="btn-primary mt-8" href={`/engineers/${engineer.slug}/request`}>
-          申请对接
-        </Link>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link className="btn-primary" href={`/checkout?type=engineer&slug=${engineer.slug}`}>
+            支付并发起对接
+          </Link>
+          <Link className="btn-secondary" href={`/engineers/${engineer.slug}/request`}>
+            先填写项目申请
+          </Link>
+        </div>
+        <section className="panel mt-8 p-5">
+          <h2 className="text-xl font-black">付款后的 mock 流程</h2>
+          <ol className="mt-4 grid gap-2 text-sm leading-6 text-muted">
+            {["优先通知所选工程师，30 分钟优先接单", "超时后通知同领域候选工程师", "客户确认是否更换接单工程师", "24 小时无人接单则进入退款处理", "接单后生成客户、工程师、平台三方邮件预览"].map((step, index) => (
+              <li key={step}>{index + 1}. {step}</li>
+            ))}
+          </ol>
+        </section>
         <div className="mt-8">
           <BoundaryNote />
         </div>

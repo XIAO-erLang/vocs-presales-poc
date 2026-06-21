@@ -27,11 +27,20 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
             <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">{tool.description}</p>
           </section>
           <aside className="panel p-5">
-            <p className="text-sm font-black text-steel">收费占位</p>
-            <p className="mt-2 text-2xl font-black">{tool.price}</p>
-            <p className="mt-2 text-sm text-muted">当前不接真实支付，可通过邮件咨询开放时间。</p>
-            <Link className="btn-secondary mt-5 w-full" href="/intent">
-              发送到邮箱咨询
+            <p className="text-sm font-black text-steel">工具使用权益</p>
+            <p className="mt-2 text-2xl font-black">单次使用 9.9 元</p>
+            <p className="mt-1 text-sm font-bold text-danger">年费会员 199 元 / 年</p>
+            <p className="mt-2 text-sm leading-6 text-muted">免费试用 3 次为占位逻辑，后续接登录系统后绑定账号与次数。</p>
+            <div className="mt-5 grid gap-3">
+              <Link className="btn-primary w-full" href={`/checkout?type=tool&slug=${tool.slug}`}>
+                单次使用
+              </Link>
+              <Link className="btn-secondary w-full" href={`/checkout?type=tool_yearly&slug=${tool.slug}`}>
+                开通年费会员
+              </Link>
+            </div>
+            <Link className="mt-4 block text-sm font-bold text-leaf-dark hover:text-danger" href="/intent">
+              先邮件咨询适用边界
             </Link>
           </aside>
         </div>
@@ -58,6 +67,13 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
           <div className="mt-5 rounded-md border border-line bg-field p-4 text-sm leading-6 text-muted">
             第一版仅展示结果区结构。真实计算公式上线前，需要逐项确认工程边界、参数单位和人工复核场景。
           </div>
+        </section>
+
+        <section className="panel mt-8 p-5">
+          <h2 className="text-xl font-black">购买后交付占位</h2>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            支付成功后将 mock 开通一次工具使用权或一年工具会员。真实上线后会由订单 webhook 写入权益表，并扣减使用次数。
+          </p>
         </section>
 
         <div className="mt-8">

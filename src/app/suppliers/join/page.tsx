@@ -26,6 +26,12 @@ export default function SupplierJoinPage() {
           平台仅展示通过初步审核的供应商资料，重点检查资料完整性、产品能力、案例信息和服务边界。
         </p>
         <section className="panel mt-8 p-5">
+          <h2 className="text-xl font-black">年费入驻说明</h2>
+          <div className="mt-4 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
+            供应商年费入驻必须先通过人工审核，审核通过后另行确认展示范围、费用、周期和责任边界。当前不显示固定年费，也不接自动支付。
+          </div>
+        </section>
+        <section className="panel mt-6 p-5">
           <h2 className="text-xl font-black">需要提交的资料</h2>
           <pre className="mt-4 whitespace-pre-wrap rounded-md border border-line bg-field p-4 text-sm leading-7 text-muted">{mailBody}</pre>
           <a className="btn-primary mt-5" href={buildMailto("供应商专栏入驻申请", mailBody)}>

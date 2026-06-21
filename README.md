@@ -1,4 +1,4 @@
-# 环保售前工具与初步方案平台 POC v0.3
+# 环保售前工具与初步方案平台 POC v0.4
 
 ## 当前版本定位
 
@@ -6,7 +6,7 @@
 
 平台面向环保销售、环保工程师、环保公司负责人、企业甲方和供应商，提供环保项目前期沟通、工况整理、计算工具、标准模板、初步方案框架、工程师对接和供应商资料展示服务。
 
-当前版本目标不是完整商业系统，而是先搭好五大板块结构，让用户进入网站后能理解平台未来提供哪些服务，并且每个板块都有可点击、可展示、可继续扩展的页面骨架。
+当前版本目标不是完整商业系统，而是先搭好五大板块结构和支付订单骨架，让用户进入网站后能理解平台未来提供哪些服务，并且能通过 mock checkout 验证购买、支付、权益开通和交付路径。
 
 ## 五大板块
 
@@ -22,7 +22,7 @@
 
 当前版本不做：
 
-- 真实支付
+- 真实支付扣款
 - 真实数据库保存
 - 真实邮件发送
 - 用户登录
@@ -32,6 +32,29 @@
 - 真实供应商广告投放
 
 `/intent` 已改为邮件咨询页，通过 `mailto:` 打开用户自己的邮件客户端，不再用网页表单保存用户信息。
+
+## v0.4 支付与订单骨架
+
+当前版本新增统一的 order / checkout / payment / entitlement 结构，支持：
+
+1. 计算工具单次使用。
+2. 计算工具年费会员。
+3. 标准模板购买。
+4. 初步方案生成购买。
+5. 工程师对接订单。
+6. 供应商对接占位。
+7. 供应商年费入驻申请与人工审核占位。
+
+第一阶段只使用 Mock Payment：
+
+- mock 支付成功。
+- mock 支付失败。
+- mock 支付取消。
+- 支付成功后 mock 开通权益。
+- 模板、方案和工程师对接的邮件交付预览。
+- 工程师 30 分钟优先接单、候选工程师、24 小时退款、72 小时完成确认的流程 UI mock。
+
+真实支付接入说明见 `PAYMENT_SETUP.md`。
 
 ## 路由列表
 
@@ -54,6 +77,14 @@
 | `/suppliers` | 供应商专栏 | 分类、示例供应商、入驻入口 |
 | `/suppliers/[slug]` | 供应商详情 | 产品能力、适用场景、谨慎场景 |
 | `/suppliers/join` | 供应商入驻申请 | 邮件申请模板和 `mailto:` |
+| `/checkout` | 统一创建订单 | 根据 query 参数识别购买对象 |
+| `/checkout/[orderId]` | 订单确认 | 展示订单、客户邮箱输入和边界说明 |
+| `/payment/mock/[orderId]` | mock 支付 | 模拟成功、失败或取消 |
+| `/payment/success` | 支付成功 | 展示权益开通和交付预览 |
+| `/payment/cancel` | 支付取消 | 展示取消状态和重新支付入口 |
+| `/payment/failed` | 支付失败 | 展示失败状态和重试入口 |
+| `/orders/[orderId]` | 订单详情 | 展示订单状态、权益和交付状态 |
+| `/engineers/orders/[orderId]` | 工程师订单状态 | 展示工程师接单流程和三方邮件预览 |
 | `/api/leads` | mock API | 旧 POC mock API，当前前台主流程不依赖 |
 
 ## Mock 数据文件
@@ -65,6 +96,11 @@ src/lib/plans.ts
 src/lib/engineers.ts
 src/lib/suppliers.ts
 src/lib/pricing.ts
+src/lib/payment/catalog.ts
+src/lib/payment/config.ts
+src/lib/payment/providers.ts
+src/lib/payment/repository.ts
+src/lib/payment/types.ts
 src/lib/platform.ts
 src/lib/data.ts
 src/lib/results.ts
@@ -108,5 +144,6 @@ Vercel 不需要设置 `NEXT_USE_LOCAL_DIST_DIR`，保持默认构建即可。
 4. 为工程师对接补状态流转和邮件内容预览。
 5. 为供应商专栏补更严格的审核标准和入驻资料校验。
 6. 如开始真实收集线索，再接 Supabase 或其他数据库。
-7. 如开始真实收费，再接支付、订单、发票和退款流程。
-
+7. 将 mock payment 替换为真实支付 provider。
+8. 将 mock repository 替换为 Supabase。
+9. 补充 webhook、退款、对账、发票、合同和税务处理。

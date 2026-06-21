@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { BoundaryNote } from "@/components/BoundaryNote";
 import { Header } from "@/components/Header";
 import { engineers, getEngineer } from "@/lib/engineers";
@@ -42,7 +43,12 @@ export default async function EngineerRequestPage({ params }: { params: Promise<
               <label className="grid gap-2 text-sm font-bold" key={field}>{field}<input className="rounded-md border border-line bg-paper px-3 py-2 font-normal" placeholder="UI 占位" /></label>
             ))}
           </div>
-          <button className="btn-primary mt-6" type="button">提交 mock 申请</button>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button className="btn-secondary" type="button">提交 mock 申请</button>
+            <Link className="btn-primary" href={`/checkout?type=engineer&slug=${engineer.slug}`}>
+              支付 129 元并进入接单流程
+            </Link>
+          </div>
         </section>
         <section className="panel mt-6 p-5">
           <h2 className="text-xl font-black">对接流程</h2>
@@ -51,6 +57,9 @@ export default async function EngineerRequestPage({ params }: { params: Promise<
               <li key={step}>{index + 1}. {step}</li>
             ))}
           </ol>
+          <div className="mt-5 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
+            129 元为平台协助发起一次工程师项目对接的服务费用。工程师完成有效对接后获得 29 元，平台保留 100 元。
+          </div>
         </section>
         <div className="mt-8">
           <BoundaryNote />

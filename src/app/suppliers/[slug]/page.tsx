@@ -44,13 +44,16 @@ export default async function SupplierDetailPage({ params }: { params: Promise<{
               <p className="mt-1 text-sm text-muted">明确设备类型可发起供应商对接，不确定适配性则先申请工程师复核。</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link className="btn-primary" href="/intent">
+              <Link className="btn-primary" href={`/checkout?type=supplier&slug=${supplier.slug}`}>
                 发起供应商对接
               </Link>
               <Link className="btn-secondary" href="/engineers">
                 申请工程师复核
               </Link>
             </div>
+          </div>
+          <div className="mt-5 rounded-md border border-line bg-hint p-4 text-sm leading-6 text-ink">
+            供应商对接暂时显示“待开放 / 邮件咨询 / 后续支持付费对接”。不确定适配性时，建议先申请工程师复核。
           </div>
         </section>
 
