@@ -82,7 +82,7 @@ function Question({ title, children }: { title: string; children: React.ReactNod
 function Choice({ checked, label, onChange }: { checked: boolean; label: string; onChange: () => void }) {
   return (
     <label className="flex cursor-pointer items-center gap-3 rounded-md border border-line bg-field p-3 text-sm font-bold transition hover:border-leaf">
-      <input checked={checked} className="h-4 w-4 accent-leaf" onChange={onChange} type="radio" />
+      <input checked={checked} className="h-4 w-4 accent-amber" onChange={onChange} type="radio" />
       <span>{label}</span>
     </label>
   );

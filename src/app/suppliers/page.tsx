@@ -16,7 +16,7 @@ export default function SuppliersPage() {
         />
         <div className="mb-6 flex flex-wrap gap-2">
           {supplierCategories.map((category) => (
-            <span className="rounded-md border border-line bg-white px-3 py-2 text-sm font-bold text-muted" key={category}>
+            <span className="rounded-md border border-line bg-paper px-3 py-2 text-sm font-bold text-muted" key={category}>
               {category}
             </span>
           ))}

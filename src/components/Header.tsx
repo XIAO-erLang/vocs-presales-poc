@@ -12,7 +12,7 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-field/95 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur">
       <div className="container-page flex flex-col gap-3 py-3 lg:flex-row lg:items-center lg:justify-between">
         <Link className="flex min-w-0 items-center gap-3" href="/">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-leaf-dark text-xs font-black text-white">
@@ -26,7 +26,7 @@ export function Header() {
         <nav className="flex gap-2 overflow-x-auto" aria-label="主导航">
           {navItems.map((item) => (
             <Link
-              className="shrink-0 rounded-md px-3 py-2 text-sm font-bold text-muted transition hover:bg-white hover:text-leaf-dark"
+              className="shrink-0 rounded-md px-3 py-2 text-sm font-bold text-muted transition hover:bg-hint hover:text-leaf-dark"
               href={item.href}
               key={item.href}
             >

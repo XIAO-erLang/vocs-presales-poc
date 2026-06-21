@@ -31,7 +31,7 @@ export default async function EngineerRequestPage({ params }: { params: Promise<
           <h2 className="text-xl font-black">必填简表</h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {requiredFields.map((field) => (
-              <label className="grid gap-2 text-sm font-bold" key={field}>{field}<input className="rounded-md border border-line bg-white px-3 py-2 font-normal" placeholder="UI 占位" /></label>
+              <label className="grid gap-2 text-sm font-bold" key={field}>{field}<input className="rounded-md border border-line bg-paper px-3 py-2 font-normal" placeholder="UI 占位" /></label>
             ))}
           </div>
         </section>
@@ -39,7 +39,7 @@ export default async function EngineerRequestPage({ params }: { params: Promise<
           <h2 className="text-xl font-black">选填工况信息</h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {optionalFields.map((field) => (
-              <label className="grid gap-2 text-sm font-bold" key={field}>{field}<input className="rounded-md border border-line bg-white px-3 py-2 font-normal" placeholder="UI 占位" /></label>
+              <label className="grid gap-2 text-sm font-bold" key={field}>{field}<input className="rounded-md border border-line bg-paper px-3 py-2 font-normal" placeholder="UI 占位" /></label>
             ))}
           </div>
           <button className="btn-primary mt-6" type="button">提交 mock 申请</button>

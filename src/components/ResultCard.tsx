@@ -11,7 +11,7 @@ export function ResultCard({ result }: { result: ResultContent }) {
         <strong className="block text-leaf-dark">{result.recommended}</strong>
         <ul className="mt-3 grid gap-2 text-sm text-ink sm:grid-cols-2">
           {result.includes.map((item) => (
-            <li className="rounded-md bg-white px-3 py-2" key={item}>
+            <li className="rounded-md bg-paper px-3 py-2" key={item}>
               {item}
             </li>
           ))}

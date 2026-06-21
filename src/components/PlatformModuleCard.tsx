@@ -9,7 +9,7 @@ export function PlatformModuleCard({ module, index }: { module: PlatformModule; 
           <p className="eyebrow mb-2">{module.eyebrow}</p>
           <h3 className="text-xl font-black leading-tight">{module.title}</h3>
         </div>
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-field text-sm font-black text-leaf">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-hint text-sm font-black text-danger">
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
@@ -29,7 +29,7 @@ export function PlatformModuleCard({ module, index }: { module: PlatformModule; 
         <ul className="mt-3 grid gap-2 text-sm leading-6">
           {module.features.slice(0, 3).map((feature) => (
             <li className="flex gap-2" key={feature}>
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-leaf" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber" />
               <span>{feature}</span>
             </li>
           ))}

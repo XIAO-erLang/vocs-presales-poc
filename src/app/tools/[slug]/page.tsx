@@ -48,7 +48,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
             {tool.inputs.slice(0, 4).map((input) => (
               <label className="grid gap-2 text-sm font-bold" key={input}>
                 {input}
-                <input className="rounded-md border border-line bg-white px-3 py-2 font-normal" placeholder="示例输入，暂不计算" />
+                <input className="rounded-md border border-line bg-paper px-3 py-2 font-normal" placeholder="示例输入，暂不计算" />
               </label>
             ))}
           </div>

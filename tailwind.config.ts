@@ -9,19 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#14202b",
-        muted: "#667482",
-        paper: "#ffffff",
-        field: "#f5f7fa",
-        line: "#d8e0e8",
-        leaf: "#2c7a62",
-        "leaf-dark": "#0f3554",
-        steel: "#1f5f8b",
-        amber: "#a86718",
-        danger: "#9f3f35"
+        ink: "#2F2A22",
+        muted: "#6F6658",
+        paper: "#FFF9F0",
+        field: "#F7F1E8",
+        line: "#E5D6C3",
+        leaf: "#B68A4C",
+        "leaf-dark": "#8B6F47",
+        steel: "#B68A4C",
+        amber: "#B68A4C",
+        danger: "#9A5B3F",
+        "cta-hover": "#765C38",
+        hint: "#F1E4D1"
       },
       boxShadow: {
-        soft: "0 18px 42px rgba(18, 32, 43, 0.1)"
+        soft: "0 18px 42px rgba(47, 42, 34, 0.1)"
       },
       borderRadius: {
         panel: "8px"

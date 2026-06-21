@@ -46,7 +46,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         姓名或称呼
         <input
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("name", event.target.value)}
           placeholder="例如：张工"
           required
@@ -56,7 +56,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         微信或邮箱
         <input
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("contact", event.target.value)}
           placeholder="用于后续发送样张或确认资料包"
           required
@@ -66,7 +66,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         身份
         <select
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("role", event.target.value as Role)}
           value={payload.role}
         >
@@ -80,7 +80,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         是否有真实项目
         <select
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("hasProject", event.target.value as ProjectStatus)}
           value={payload.hasProject}
         >
@@ -94,7 +94,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         想获取的内容
         <input
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("desiredContent", event.target.value)}
           value={payload.desiredContent}
         />
@@ -102,7 +102,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         意向选项
         <select
-          className="rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("intent", event.target.value as IntentOption)}
           value={payload.intent}
         >
@@ -116,7 +116,7 @@ export function LeadForm() {
       <label className="grid gap-2 text-sm font-bold">
         一句话描述需求
         <textarea
-          className="min-h-28 rounded-md border border-line bg-field px-3 py-3 font-normal outline-none focus:border-leaf"
+          className="min-h-28 rounded-md border border-line bg-paper px-3 py-3 font-normal outline-none focus:border-amber"
           onChange={(event) => update("message", event.target.value)}
           placeholder="例如：客户是喷涂车间，想知道报价前要补哪些参数。"
           value={payload.message}
