@@ -9,24 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#2F2A22",
-        muted: "#6F6658",
-        paper: "#FFF9F0",
-        field: "#F7F1E8",
-        line: "#E5D6C3",
-        leaf: "#B68A4C",
-        "leaf-dark": "#8B6F47",
-        steel: "#B68A4C",
-        amber: "#B68A4C",
-        danger: "#9A5B3F",
-        "cta-hover": "#765C38",
-        hint: "#F1E4D1"
+        ink: "#2E2E2E",
+        muted: "#6B6B6B",
+        paper: "#FFFFFF",
+        field: "#F8F8F6",
+        line: "#E5E5E5",
+        leaf: "#B9976B",
+        "leaf-dark": "#5E4B36",
+        steel: "#B9976B",
+        amber: "#B9976B",
+        danger: "#D95C44",
+        success: "#6E8F76",
+        "logo-green": "#7A8463",
+        "cta-hover": "#A78356",
+        hint: "#F8F8F6",
+        "hover-warm": "#FFFCF8",
+        "sand-soft": "#E8E0D4"
       },
       boxShadow: {
-        soft: "0 18px 42px rgba(47, 42, 34, 0.1)"
+        soft: "0 18px 54px rgba(46, 46, 46, 0.07)",
+        float: "0 30px 90px rgba(46, 46, 46, 0.10)"
       },
       borderRadius: {
-        panel: "8px"
+        panel: "24px"
       }
     }
   },

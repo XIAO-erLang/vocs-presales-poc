@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LogoMark } from "@/components/LogoMark";
 
 const navItems = [
   { href: "/", label: "首页" },
@@ -13,28 +17,36 @@ const navItems = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="container-page flex flex-col gap-3 py-3 lg:flex-row lg:items-center lg:justify-between">
+    <header className="sticky top-0 z-20 border-b border-[#E5E5E5] bg-white/90 backdrop-blur-xl">
+      <div className="container-page flex flex-col gap-2 py-2 lg:flex-row lg:items-center lg:justify-between lg:gap-3 lg:py-2.5">
         <Link className="flex min-w-0 items-center gap-3" href="/">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-leaf-dark text-xs font-black text-white">
-            源解
-          </span>
+          <LogoMark className="h-8 w-8 shrink-0 text-logo-green sm:h-9 sm:w-9" />
           <span className="min-w-0">
-            <strong className="block truncate text-base">源解</strong>
-            <span className="block truncate text-xs text-muted">环境工程技术支持与资源协同平台</span>
+            <strong className="block truncate text-base font-black leading-tight text-ink">源解环保</strong>
+            <span className="hidden truncate text-xs font-normal leading-tight text-muted sm:block sm:text-sm">SourceLink Env</span>
           </span>
         </Link>
-        <nav className="flex gap-2 overflow-x-auto" aria-label="主导航">
-          {navItems.map((item) => (
-            <Link
-              className="shrink-0 rounded-md px-3 py-2 text-sm font-bold text-muted transition hover:bg-hint hover:text-leaf-dark"
-              href={item.href}
-              key={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="flex gap-1 overflow-x-auto lg:gap-2" aria-label="主导航">
+          {navItems.map((item) => {
+            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                className={
+                  active
+                    ? "shrink-0 rounded-full bg-field px-3 py-1.5 text-sm font-bold text-leaf transition sm:px-3.5 sm:py-2"
+                    : "shrink-0 rounded-full px-3 py-1.5 text-sm font-bold text-ink transition hover:bg-field hover:text-leaf sm:px-3.5 sm:py-2"
+                }
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>

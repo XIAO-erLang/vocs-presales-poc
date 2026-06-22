@@ -1,72 +1,97 @@
 import Link from "next/link";
 import { BoundaryNote } from "@/components/BoundaryNote";
 import { Header } from "@/components/Header";
+import { LogoMark } from "@/components/LogoMark";
 import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { PlatformModuleCard } from "@/components/PlatformModuleCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { painPoints } from "@/lib/data";
 import { platformModules, startPaths } from "@/lib/platform";
-import { pricingItems } from "@/lib/pricing";
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <main>
-        <section className="container-page grid gap-8 py-10 lg:min-h-[calc(100vh-73px)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-16">
-          <div>
-            <p className="eyebrow mb-3">环境工程技术支持与资源协同平台</p>
-            <h1 className="max-w-4xl text-4xl font-black leading-[1.08] tracking-normal sm:text-6xl lg:text-7xl">
-              源解
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-muted sm:text-xl">
-              从污染源、工况源和需求源出发，协助环保项目参与者完成前期判断、技术路径梳理、工程师对接与供应资源匹配。
-            </p>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
-              源解以 VOCs 废气治理为切入口，提供计算工具、标准模板、方案框架、工程师对接、机械设计协作与供应商资料库，帮助客户、初级环保工程师、售前人员和项目经理更快完成项目前期判断、技术沟通与资源匹配。
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="btn-primary" href="#modules">
-                查看六大板块
-              </Link>
-              <Link className="btn-secondary" href="#audience">
-                选择我的入口
-              </Link>
-              <Link className="btn-secondary" href="/cooperate">
-                加入合作网络
-              </Link>
-            </div>
-            <div className="mt-6 max-w-3xl">
-              <BoundaryNote compact />
-            </div>
-          </div>
-
-          <div className="panel p-5 sm:p-7">
-            <div className="mb-5 border-b border-line pb-4">
-              <p className="text-sm font-black text-steel">源解服务范围</p>
-              <h2 className="mt-2 text-2xl font-black">工具、知识资产与资源协同的轻量闭环</h2>
-            </div>
-            <div className="grid gap-3">
-              {pricingItems.slice(0, 5).map((item) => (
-                <div className="rounded-md border border-line bg-field p-4" key={item.name}>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-sm font-bold text-muted">{item.name}</span>
-                    <strong className="text-sm text-leaf-dark">{item.price}</strong>
-                  </div>
-                  <p className="mt-1 text-sm text-muted">{item.status}，当前为 mock 支付与服务验证。</p>
+        <section className="bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_62%,#F8F8F6_100%)]">
+          <div className="container-page grid gap-12 py-20 sm:py-24 lg:min-h-[calc(100vh-65px)] lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-28">
+            <div>
+              <div className="mb-10 flex items-center gap-4 sm:gap-5">
+                <LogoMark className="h-14 w-14 shrink-0 text-logo-green sm:h-16 sm:w-16" />
+                <div className="min-w-0">
+                  <p className="text-3xl font-black leading-tight text-ink sm:text-5xl">源解环保</p>
+                  <p className="mt-1 text-base font-normal text-muted sm:text-lg">SourceLink Env</p>
                 </div>
-              ))}
+              </div>
+              <p className="eyebrow mb-5">AI + 环境工程技术支持平台</p>
+              <h1 className="max-w-4xl text-4xl font-black leading-[1.05] tracking-normal text-ink sm:text-6xl lg:text-7xl">
+                环境工程技术支持与资源协同平台
+              </h1>
+              <p className="mt-7 max-w-3xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
+                把复杂的 VOCs 工况信息、技术判断和资源对接流程，整理成更清晰、可沟通、可复用的前期方案框架。
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link className="btn-primary" href="#modules">
+                  开始使用平台
+                </Link>
+                <Link className="btn-secondary" href="/templates">
+                  浏览资料库
+                </Link>
+              </div>
+              <div className="mt-10 max-w-3xl">
+                <BoundaryNote compact />
+              </div>
+            </div>
+
+            <div className="rounded-[32px] bg-white p-5 shadow-float ring-1 ring-black/[0.04] sm:p-7">
+              <div className="mb-7 flex items-start justify-between gap-5">
+                <div>
+                  <p className="text-sm font-black text-leaf">平台能力预览</p>
+                  <h2 className="mt-2 text-2xl font-black text-ink">从工况到方案框架</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted">
+                    把前期沟通中散落的信息，整理成可复核、可分工、可沉淀的项目资料。
+                  </p>
+                </div>
+                <span className="hidden rounded-full bg-field px-3 py-1 text-xs font-black text-logo-green sm:inline-flex">
+                  VOCs first
+                </span>
+              </div>
+              <div className="grid gap-3">
+                {[
+                  { step: "01", title: "工况信息整理", desc: "风量、浓度、成分、温度、排放要求" },
+                  { step: "02", title: "技术路径判断", desc: "活性炭、喷淋、RCO、RTO 等路线提示" },
+                  { step: "03", title: "资源协同入口", desc: "工程师复核、机械设计、供应商资料" }
+                ].map((item) => (
+                  <div className="rounded-3xl bg-field p-4 transition hover:bg-hover-warm" key={item.step}>
+                    <div className="flex items-start gap-4">
+                      <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-xs font-black text-leaf shadow-[0_6px_18px_rgba(46,46,46,0.06)]">
+                        {item.step}
+                      </span>
+                      <div>
+                        <strong className="text-sm text-ink">{item.title}</strong>
+                        <p className="mt-1 text-sm leading-6 text-muted">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 rounded-3xl bg-[#F8F8F6] p-5">
+                <p className="text-xs font-black uppercase tracking-normal text-leaf">VOCs first</p>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  先从 VOCs 废气治理切入，再扩展到臭气、除尘、预处理和供应资源协同。
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="container-page py-12" id="audience">
+        <section className="container-page py-20 sm:py-24" id="audience">
           <SectionTitle
             eyebrow="双入口"
             title="先选你现在的角色"
             description="源解同时服务客户侧和从业者侧：一边帮助客户整理需求、匹配资源，一边帮助从业者沉淀工具、模板和经验。"
           />
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-5 lg:grid-cols-2">
             <AudienceCard
               title="我是客户"
               audience="甲方企业、环保项目负责人、环保公司老板、采购/项目管理人员、想判断方案是否靠谱的人"
@@ -95,24 +120,26 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="container-page py-12" id="modules">
-          <SectionTitle
-            eyebrow="六大板块"
-            title="源解的六个协同入口"
-            description="VOCs 废气治理仍然是第一个切入口，后续逐步扩展到更多环境工程前期判断和资源协同场景。"
-          />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {platformModules.map((module, index) => (
-              <PlatformModuleCard module={module} index={index} key={module.href} />
-            ))}
+        <section className="bg-field py-20 sm:py-24" id="modules">
+          <div className="container-page">
+            <SectionTitle
+              eyebrow="六大板块"
+              title="源解的六个协同入口"
+              description="VOCs 废气治理仍然是第一个切入口，后续逐步扩展到更多环境工程前期判断和资源协同场景。"
+            />
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {platformModules.map((module, index) => (
+                <PlatformModuleCard module={module} index={index} key={module.href} />
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="container-page py-12">
+        <section className="container-page py-20 sm:py-24">
           <SectionTitle eyebrow="推荐路径" title="我该从哪里开始？" />
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {startPaths.map((path) => (
-              <Link className="panel block p-5 transition hover:-translate-y-0.5 hover:shadow-soft" href={path.href} key={path.problem}>
+              <Link className="panel block p-6 transition duration-200 hover:-translate-y-1 hover:bg-hover-warm hover:shadow-float" href={path.href} key={path.problem}>
                 <p className="text-sm leading-6 text-muted">{path.problem}</p>
                 <p className="mt-4 text-lg font-black text-leaf-dark">{path.target}</p>
               </Link>
@@ -120,11 +147,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="container-page py-12">
+        <section className="container-page py-4">
           <PlatformBoundaryStatement />
         </section>
 
-        <section className="container-page py-12">
+        <section className="container-page py-20 sm:py-24">
           <SectionTitle
             eyebrow="原 POC 主线"
             title="VOCs 售前助手仍然保留"
@@ -132,13 +159,32 @@ export default function HomePage() {
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {painPoints.map((point, index) => (
-              <article className="panel p-4" key={point}>
-                <span className="mb-4 block text-sm font-black text-amber">痛点 {index + 1}</span>
+              <article className="panel p-5" key={point}>
+                <span className="mb-4 block text-sm font-black text-leaf">痛点 {index + 1}</span>
                 <p className="text-sm leading-6 text-ink">{point}</p>
               </article>
             ))}
           </div>
         </section>
+
+        <footer className="mt-8 bg-ink py-12 text-white">
+          <div className="container-page flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-3">
+              <LogoMark className="h-12 w-12 shrink-0 text-white" />
+              <div>
+                <p className="text-lg font-black">源解环保</p>
+                <p className="text-sm text-[#BDBDBD]">SourceLink Env</p>
+              </div>
+            </div>
+            <div className="text-sm leading-6 text-[#BDBDBD]">
+              <p>环境工程技术支持与资源协同平台</p>
+              <p>用于前期判断、资料整理、工程师对接和供应资源匹配。</p>
+            </div>
+            <Link className="text-sm font-bold text-white transition hover:text-sand-soft" href="/intent">
+              邮件咨询
+            </Link>
+          </div>
+        </footer>
       </main>
     </>
   );
@@ -158,13 +204,13 @@ function AudienceCard({
   links: { href: string; label: string }[];
 }) {
   return (
-    <section className="panel flex h-full flex-col p-5 sm:p-6">
+    <section className="panel flex h-full flex-col p-6 transition duration-200 hover:-translate-y-1 hover:bg-hover-warm hover:shadow-float sm:p-7">
       <p className="eyebrow mb-3">{audience}</p>
       <h2 className="text-2xl font-black">{title}</h2>
       <p className="mt-3 text-sm leading-6 text-muted">{description}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {features.map((feature) => (
-          <span className="rounded-md border border-line bg-field px-2.5 py-1 text-xs font-bold text-muted" key={feature}>
+          <span className="rounded-full bg-field px-3 py-1.5 text-xs font-bold text-muted" key={feature}>
             {feature}
           </span>
         ))}
