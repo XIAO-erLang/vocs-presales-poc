@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/LogoMark";
 
-const SPLASH_STORAGE_KEY = "yuanjie-env-splash-v1-seen";
+const SPLASH_STORAGE_KEY = "yuanjie-env-splash-v2-seen";
 
 function hasSeenSplash() {
   try {
@@ -22,7 +22,7 @@ function markSplashSeen() {
 }
 
 export function SplashScreen() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [entered, setEntered] = useState(false);
   const [exiting, setExiting] = useState(false);
 
@@ -30,6 +30,7 @@ export function SplashScreen() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion || hasSeenSplash()) {
+      setVisible(false);
       return;
     }
 
@@ -41,10 +42,10 @@ export function SplashScreen() {
     });
     const exitTimer = window.setTimeout(() => {
       setExiting(true);
-    }, 1600);
+    }, 2200);
     const hideTimer = window.setTimeout(() => {
       setVisible(false);
-    }, 2000);
+    }, 2700);
 
     return () => {
       window.cancelAnimationFrame(frame);
@@ -58,10 +59,10 @@ export function SplashScreen() {
   }
 
   const logoState = exiting
-    ? "opacity-0 scale-[1.02] duration-[400ms]"
+    ? "opacity-0 scale-[1.02] duration-[500ms]"
     : entered
-      ? "opacity-100 scale-100 duration-[600ms]"
-      : "opacity-0 scale-[0.96] duration-[600ms]";
+      ? "opacity-100 scale-100 duration-[400ms]"
+      : "opacity-0 scale-[0.96] duration-[400ms]";
 
   return (
     <div className="fixed inset-0 z-[100] grid place-items-center bg-white" aria-hidden="true">

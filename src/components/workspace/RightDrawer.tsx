@@ -30,10 +30,17 @@ export function RightDrawer({
         <h2 className="mt-3 text-3xl font-extrabold">{tool.name}</h2>
         <p className="mt-4 text-sm leading-7 text-muted">{tool.description}</p>
 
-        <div className="mt-8 rounded-2xl bg-field p-5">
-          <p className="text-sm font-bold text-leaf-dark">Mock result</p>
-          <p className="mt-3 text-2xl font-extrabold text-ink">{tool.output}</p>
-          <p className="mt-4 text-sm leading-7 text-muted">{tool.risk}</p>
+        <div className="mt-8 grid gap-3">
+          <div className="rounded-2xl bg-field p-5">
+            <p className="text-sm font-bold text-logo-green">Free result</p>
+            <p className="mt-3 text-2xl font-extrabold text-ink">{tool.output}</p>
+            <p className="mt-4 text-sm leading-7 text-muted">{tool.risk}</p>
+          </div>
+          <div className="rounded-2xl bg-[#F8F4EC] p-5 ring-1 ring-sand-soft">
+            <p className="text-sm font-bold text-leaf-dark">Pro enhanced result</p>
+            <p className="mt-3 text-base font-extrabold leading-7 text-ink">{tool.proOutput}</p>
+            <p className="mt-4 text-sm leading-7 text-muted">{tool.upgradeInsight}</p>
+          </div>
         </div>
 
         <button className="btn-primary mt-8 w-full" data-testid="workspace-use-tool-result" onClick={() => onUseResult(tool)} type="button">

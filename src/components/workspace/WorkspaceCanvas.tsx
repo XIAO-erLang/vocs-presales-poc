@@ -1,4 +1,4 @@
-import type { Project, WorkspaceStep } from "@/lib/workspace";
+import type { Project, WorkspaceLanguage, WorkspaceRole, WorkspaceStep } from "@/lib/workspace";
 import type { ReactNode } from "react";
 
 export function WorkspaceCanvas({
@@ -8,7 +8,9 @@ export function WorkspaceCanvas({
   onCompleteTools,
   onGeneratePlan,
   onCompleteReview,
-  onReset
+  onReset,
+  role,
+  language
 }: {
   project: Project;
   currentStep: WorkspaceStep;
@@ -17,7 +19,13 @@ export function WorkspaceCanvas({
   onGeneratePlan: () => void;
   onCompleteReview: () => void;
   onReset: () => void;
+  role: WorkspaceRole;
+  language: WorkspaceLanguage;
 }) {
+  const copy = language === "cn"
+    ? { roleTitle: "角色视图", note: "同一 Project，不同角色看到不同信息层级。" }
+    : { roleTitle: "Role View", note: "One Project, different information layers for each role." };
+
   return (
     <section className="min-h-[calc(100vh-145px)] flex-1 bg-[#FCFCFB] p-4 sm:p-6">
       {currentStep === "input" ? (
@@ -51,16 +59,28 @@ export function WorkspaceCanvas({
           <div className="grid gap-3">
             {project.results.length > 0 ? (
               project.results.map((result) => (
-                <article className="rounded-2xl bg-white p-4 shadow-soft ring-1 ring-black/[0.04]" key={result.tool}>
-                  <p className="text-sm font-extrabold text-ink">{result.tool}</p>
-                  <p className="mt-2 text-lg font-extrabold text-leaf-dark">{result.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">{result.risk}</p>
+                <article className="grid gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-black/[0.04] md:grid-cols-2" key={result.tool}>
+                  <div className="rounded-xl bg-field p-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">Free result</p>
+                    <p className="mt-3 text-sm font-extrabold text-ink">{result.tool}</p>
+                    <p className="mt-2 text-lg font-extrabold text-leaf-dark">{result.value}</p>
+                    <p className="mt-2 text-sm leading-6 text-muted">{result.risk}</p>
+                  </div>
+                  <div className="rounded-xl bg-[#F8F4EC] p-4 ring-1 ring-sand-soft">
+                    <p className="text-xs font-bold uppercase tracking-[0.1em] text-leaf-dark">Pro enhanced result</p>
+                    <p className="mt-3 text-sm font-extrabold text-ink">更高精度计算</p>
+                    <p className="mt-2 text-sm leading-6 text-muted">可补充设备选型、成本模型、达标风险矩阵和自动参数敏感性分析。</p>
+                  </div>
                 </article>
               ))
             ) : (
               <p className="rounded-2xl bg-field p-5 text-sm leading-7 text-muted">还没有工具结果。先从右侧 Tool Panel 选择一个工具。</p>
             )}
           </div>
+          <UpgradeInsightCard
+            title="Free 不会中断流程"
+            description="即使不升级，也可以继续进入 Plan。Pro 只是把基础结果增强为更高精度、更少人工步骤的结果。"
+          />
         </WorkspaceCard>
       ) : null}
 
@@ -73,7 +93,14 @@ export function WorkspaceCanvas({
           onAction={onGeneratePlan}
           testId="workspace-generate-plan"
         >
-          <PlanPreview project={project} />
+          <div className="grid gap-4 lg:grid-cols-2">
+            <PlanPreview project={project} tier="Basic Plan" />
+            <AdvancedPlanPreview />
+          </div>
+          <UpgradeInsightCard
+            title="Basic Plan 可以交付沟通"
+            description="Advanced Plan 会增加多方案对比、成本模型和排放达标分析，但不会阻断 Basic Plan 的生成。"
+          />
         </WorkspaceCard>
       ) : null}
 
@@ -91,6 +118,10 @@ export function WorkspaceCanvas({
               <div className="rounded-2xl bg-field p-4 text-sm font-bold text-leaf-dark" key={item}>{item}</div>
             ))}
           </div>
+          <UpgradeInsightCard
+            title="Assisted AI 可减少复核遗漏"
+            description="当前 Manual 模式保留人工判断；Assisted AI 可自动整理风险清单和工程师复核建议。"
+          />
         </WorkspaceCard>
       ) : null}
 
@@ -113,6 +144,8 @@ export function WorkspaceCanvas({
           </div>
         </WorkspaceCard>
       ) : null}
+
+      <RoleViewPanel language={language} note={copy.note} role={role} title={copy.roleTitle} />
     </section>
   );
 }
@@ -156,14 +189,70 @@ function InfoField({ label, value }: { label: string; value: string }) {
   );
 }
 
-function PlanPreview({ project }: { project: Project }) {
+function PlanPreview({ project, tier }: { project: Project; tier: string }) {
   return (
     <div className="rounded-2xl bg-field p-5">
-      <p className="text-lg font-extrabold text-ink">{project.plan.title}</p>
+      <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">{tier}</p>
+      <p className="mt-3 text-lg font-extrabold text-ink">{project.plan.title}</p>
       <p className="mt-3 text-sm leading-7 text-muted">{project.plan.summary}</p>
       <div className="mt-5 grid gap-2">
         {project.plan.sections.map((section) => (
           <p className="rounded-xl bg-white px-4 py-3 text-sm font-bold text-leaf-dark" key={section}>{section}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AdvancedPlanPreview() {
+  return (
+    <div className="rounded-2xl bg-[#F8F4EC] p-5 ring-1 ring-sand-soft">
+      <p className="text-xs font-bold uppercase tracking-[0.1em] text-leaf-dark">Advanced Plan</p>
+      <p className="mt-3 text-lg font-extrabold text-ink">Pro 增强方案</p>
+      <p className="mt-3 text-sm leading-7 text-muted">在 Basic Plan 基础上补充多方案对比、设备选型计算、成本模型和达标风险分析。</p>
+      <div className="mt-5 grid gap-2">
+        {["多路线对比", "设备选型建议", "CAPEX / OPEX", "达标风险矩阵", "自动复核建议"].map((section) => (
+          <p className="rounded-xl bg-white px-4 py-3 text-sm font-bold text-leaf-dark" key={section}>{section}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function UpgradeInsightCard({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="mt-5 rounded-2xl bg-[#F8F4EC] p-5 ring-1 ring-sand-soft">
+      <p className="text-sm font-extrabold text-leaf-dark">{title}</p>
+      <p className="mt-2 text-sm leading-7 text-muted">{description}</p>
+    </div>
+  );
+}
+
+function RoleViewPanel({ role, title, note, language }: { role: WorkspaceRole; title: string; note: string; language: WorkspaceLanguage }) {
+  const cnContent = {
+    customer: ["输入工况", "查看方案", "查看报价口径", "隐藏复杂工程细节"],
+    engineer: ["技术参数", "工具计算", "方案结构", "报价工具"],
+    supplier: ["需求信息", "技术规格", "设备参数", "供应匹配边界"]
+  }[role];
+  const enContent = {
+    customer: ["Input conditions", "View plan", "View pricing scope", "Hide engineering detail"],
+    engineer: ["Technical parameters", "Tool calculations", "Plan structure", "Pricing tools"],
+    supplier: ["Demand information", "Technical specs", "Equipment parameters", "Supply boundary"]
+  }[role];
+  const content = language === "cn" ? cnContent : enContent;
+
+  return (
+    <div className="mx-auto mt-5 max-w-4xl rounded-[24px] bg-white p-5 shadow-soft ring-1 ring-black/[0.04]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm font-extrabold text-ink">{title}</p>
+          <p className="mt-1 text-xs leading-5 text-muted">{note}</p>
+        </div>
+        <span className="rounded-full bg-field px-3 py-1.5 text-xs font-bold uppercase text-leaf-dark">{role}</span>
+      </div>
+      <div className="mt-4 grid gap-2 sm:grid-cols-4">
+        {content.map((item) => (
+          <p className="rounded-xl bg-field px-4 py-3 text-xs font-bold text-muted" key={item}>{item}</p>
         ))}
       </div>
     </div>

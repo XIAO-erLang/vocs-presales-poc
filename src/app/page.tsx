@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { LogoMark } from "@/components/LogoMark";
-import { SplashScreen } from "@/components/SplashScreen";
 
 const primaryActions = [
   { label: "Start a Project", href: "/workspace", primary: true },
   { label: "Browse Tools", href: "/tools" },
   { label: "Generate Plan", href: "/plans" },
-  { label: "Find Engineers", href: "/network" }
+  { label: "Find Engineers", href: "/ecosystem" }
 ];
 
 const workflowSteps = [
@@ -48,8 +47,8 @@ const productAreas = [
     description: "从结构化项目信息生成售前沟通用的初步方案框架。"
   },
   {
-    label: "Network",
-    href: "/network",
+    label: "Ecosystem",
+    href: "/ecosystem",
     title: "资源匹配",
     description: "围绕同一个 Project 对接工程师、机械设计和供应商资料。"
   }
@@ -58,7 +57,6 @@ const productAreas = [
 export default function HomePage() {
   return (
     <>
-      <SplashScreen />
       <Header />
       <main className="bg-white text-ink">
         <section className="container-page min-h-[calc(100vh-65px)] py-20 sm:py-24 lg:py-28">
