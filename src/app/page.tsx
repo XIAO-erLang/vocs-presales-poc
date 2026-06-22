@@ -5,12 +5,14 @@ import { LogoMark } from "@/components/LogoMark";
 import { PlatformBoundaryStatement } from "@/components/PlatformBoundaryStatement";
 import { PlatformModuleCard } from "@/components/PlatformModuleCard";
 import { SectionTitle } from "@/components/SectionTitle";
+import { SplashScreen } from "@/components/SplashScreen";
 import { painPoints } from "@/lib/data";
 import { platformModules, startPaths } from "@/lib/platform";
 
 export default function HomePage() {
   return (
     <>
+      <SplashScreen />
       <Header />
       <main>
         <section className="bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_62%,#F8F8F6_100%)]">
