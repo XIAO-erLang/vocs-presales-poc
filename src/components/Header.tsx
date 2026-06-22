@@ -5,15 +5,13 @@ import { usePathname } from "next/navigation";
 import { LogoMark } from "@/components/LogoMark";
 
 const navItems = [
-  { href: "/", label: "首页" },
-  { href: "/tools", label: "工具" },
-  { href: "/templates", label: "模板" },
-  { href: "/plans", label: "方案框架" },
-  { href: "/engineers", label: "工程师" },
-  { href: "/mechanical", label: "机械设计" },
-  { href: "/suppliers", label: "供应商" },
-  { href: "/cooperate", label: "合作入口" },
-  { href: "/intent", label: "邮件咨询" }
+  { href: "/", label: "Home" },
+  { href: "/workspace", label: "Workspace" },
+  { href: "/tools", label: "Tools" },
+  { href: "/templates", label: "Templates" },
+  { href: "/plans", label: "Plans" },
+  { href: "/network", label: "Network" },
+  { href: "/library", label: "Library" }
 ];
 
 export function Header() {
