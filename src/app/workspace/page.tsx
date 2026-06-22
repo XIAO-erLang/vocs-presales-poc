@@ -21,7 +21,7 @@ export default function WorkspacePage() {
             第一版工作台先把“项目创建”作为平台主入口。后续所有工具、模板、方案和资源匹配都会围绕同一个 Project 展开。
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link className="btn-primary" href="/plans">Create Project Draft</Link>
+            <Link className="btn-primary" href="/workspace/demo-vocs">Open Demo Project</Link>
             <Link className="btn-secondary" href="/templates">Prepare Inputs</Link>
           </div>
         </section>
