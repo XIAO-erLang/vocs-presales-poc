@@ -16,19 +16,18 @@ export default function HomePage() {
         <section className="bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_62%,#F8F8F6_100%)]">
           <div className="container-page grid gap-12 py-20 sm:py-24 lg:min-h-[calc(100vh-65px)] lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-28">
             <div>
-              <div className="mb-10 flex items-center gap-4 sm:gap-5">
-                <LogoMark className="h-14 w-14 shrink-0 text-logo-green sm:h-16 sm:w-16" />
-                <div className="min-w-0">
-                  <p className="text-3xl font-black leading-tight text-ink sm:text-5xl">源解环保</p>
-                  <p className="mt-1 text-base font-normal text-muted sm:text-lg">SourceLink Env</p>
-                </div>
+              <div className="mb-8 flex items-center gap-3">
+                <LogoMark className="h-9 w-9 shrink-0 text-logo-green sm:h-10 sm:w-10" />
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green sm:text-sm">VOCs-focused</p>
               </div>
-              <p className="eyebrow mb-5">AI + 环境工程技术支持平台</p>
-              <h1 className="max-w-4xl text-4xl font-black leading-[1.05] tracking-normal text-ink sm:text-6xl lg:text-7xl">
-                环境工程技术支持与资源协同平台
+              <h1 className="max-w-[8ch] text-6xl font-extrabold leading-[1.05] tracking-normal text-ink sm:text-7xl lg:text-[clamp(72px,8vw,112px)]">
+                源解环保
               </h1>
-              <p className="mt-7 max-w-3xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
-                把复杂的 VOCs 工况信息、技术判断和资源对接流程，整理成更清晰、可沟通、可复用的前期方案框架。
+              <h2 className="mt-7 max-w-[24ch] text-3xl font-semibold leading-[1.18] tracking-normal text-ink sm:text-4xl lg:text-[40px]">
+                环境工程技术支持与资源协同平台
+              </h2>
+              <p className="mt-6 max-w-[600px] text-base !leading-[1.7] text-muted sm:text-lg lg:text-xl">
+                把复杂的 VOCs 工况信息、技术判断和资源对接流程，整理成可沟通、可复用的前期方案框架。
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link className="btn-primary" href="#modules">
@@ -52,8 +51,8 @@ export default function HomePage() {
                     把前期沟通中散落的信息，整理成可复核、可分工、可沉淀的项目资料。
                   </p>
                 </div>
-                <span className="hidden rounded-full bg-field px-3 py-1 text-xs font-black text-logo-green sm:inline-flex">
-                  VOCs first
+                <span className="hidden rounded-full bg-field px-3 py-1 text-xs font-bold text-logo-green sm:inline-flex">
+                  VOCs-focused
                 </span>
               </div>
               <div className="grid gap-3">
@@ -76,7 +75,7 @@ export default function HomePage() {
                 ))}
               </div>
               <div className="mt-6 rounded-3xl bg-[#F8F8F6] p-5">
-                <p className="text-xs font-black uppercase tracking-normal text-leaf">VOCs first</p>
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-leaf">VOCs-focused</p>
                 <p className="mt-2 text-sm leading-6 text-muted">
                   先从 VOCs 废气治理切入，再扩展到臭气、除尘、预处理和供应资源协同。
                 </p>
