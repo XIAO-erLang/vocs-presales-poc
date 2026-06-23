@@ -59,7 +59,7 @@ export default function HomePage() {
     <>
       <Header />
       <main className="bg-white text-ink">
-        <section className="container-page min-h-[calc(100vh-65px)] py-20 sm:py-24 lg:py-28">
+        <section className="container-page min-h-[calc(100vh-65px)] py-28 sm:py-32 lg:py-36">
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
             <div className="mb-8 flex items-center gap-4">
               <LogoMark className="h-12 w-12 text-logo-green sm:h-14 sm:w-14" />
@@ -69,13 +69,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h1 className="text-6xl font-extrabold leading-[1.05] tracking-normal sm:text-7xl lg:text-[112px]">
+            <h1 className="text-6xl font-semibold leading-[1.1] tracking-[0.5px] text-[#1F1F1F] sm:text-7xl lg:text-[112px]">
               源解环保
             </h1>
-            <p className="mt-7 text-2xl font-semibold leading-tight text-ink sm:text-4xl">
+            <p className="mt-8 text-sm font-normal leading-7 text-muted sm:text-base">
               AI + 环境工程技术支持平台
             </p>
-            <p className="mt-6 max-w-[680px] text-base leading-[1.75] text-muted sm:text-lg">
+            <p className="mt-7 max-w-[680px] text-base leading-[1.75] text-muted sm:text-lg">
               以 Project 为中心，把 VOCs 工况信息、计算工具、标准模板、方案框架和资源对接整理成一套可推进的前期工作系统。
             </p>
 
