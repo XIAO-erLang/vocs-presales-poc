@@ -27,7 +27,7 @@ export function WorkspaceCanvas({
     : { roleTitle: "Role View", note: "One Project, different information layers for each role." };
 
   return (
-    <section className="min-h-[calc(100vh-145px)] flex-1 bg-[#FCFCFB] p-4 sm:p-6">
+    <section className="grid gap-4">
       {currentStep === "input" ? (
         <WorkspaceCard
           eyebrow="Input"
@@ -43,7 +43,7 @@ export function WorkspaceCanvas({
             <InfoField label="初步风量" value={project.inputData.airVolume} />
             <InfoField label="浓度状态" value={project.inputData.concentration} />
           </div>
-          <div className="mt-3 rounded-2xl bg-field p-4 text-sm leading-7 text-muted">{project.inputData.notes}</div>
+          <div className="mt-3 rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-4 text-sm leading-7 text-muted">{project.inputData.notes}</div>
         </WorkspaceCard>
       ) : null}
 
@@ -59,22 +59,22 @@ export function WorkspaceCanvas({
           <div className="grid gap-3">
             {project.results.length > 0 ? (
               project.results.map((result) => (
-                <article className="grid gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-black/[0.04] md:grid-cols-2" key={result.tool}>
-                  <div className="rounded-xl bg-field p-4">
+                <article className="grid gap-3 rounded-xl border border-[#E8E8E8] bg-white p-4 md:grid-cols-2" key={result.tool}>
+                  <div className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-4">
                     <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">Free result</p>
-                    <p className="mt-3 text-sm font-extrabold text-ink">{result.tool}</p>
-                    <p className="mt-2 text-lg font-extrabold text-leaf-dark">{result.value}</p>
+                    <p className="mt-3 text-sm font-semibold text-ink">{result.tool}</p>
+                    <p className="mt-2 text-lg font-semibold text-ink">{result.value}</p>
                     <p className="mt-2 text-sm leading-6 text-muted">{result.risk}</p>
                   </div>
-                  <div className="rounded-xl bg-[#F8F4EC] p-4 ring-1 ring-sand-soft">
-                    <p className="text-xs font-bold uppercase tracking-[0.1em] text-leaf-dark">Pro enhanced result</p>
-                    <p className="mt-3 text-sm font-extrabold text-ink">更高精度计算</p>
+                  <div className="rounded-xl border border-[#E8E8E8] bg-white p-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">Pro enhanced result</p>
+                    <p className="mt-3 text-sm font-semibold text-ink">更高精度计算</p>
                     <p className="mt-2 text-sm leading-6 text-muted">可补充设备选型、成本模型、达标风险矩阵和自动参数敏感性分析。</p>
                   </div>
                 </article>
               ))
             ) : (
-              <p className="rounded-2xl bg-field p-5 text-sm leading-7 text-muted">还没有工具结果。先从右侧 Tool Panel 选择一个工具。</p>
+              <p className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-5 text-sm leading-7 text-muted">还没有工具结果。先从下方 Tool Panel 选择一个工具。</p>
             )}
           </div>
           <UpgradeInsightCard
@@ -115,7 +115,7 @@ export function WorkspaceCanvas({
         >
           <div className="grid gap-3">
             {["缺少连续浓度数据", "需确认臭气与 VOCs 是否共线处理", "需明确预处理和活性炭更换周期"].map((item) => (
-              <div className="rounded-2xl bg-field p-4 text-sm font-bold text-leaf-dark" key={item}>{item}</div>
+              <div className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-4 text-sm font-medium text-ink" key={item}>{item}</div>
             ))}
           </div>
           <UpgradeInsightCard
@@ -136,8 +136,8 @@ export function WorkspaceCanvas({
         >
           <div className="grid gap-3 md:grid-cols-3">
             {["工况摘要", "方案框架", "复核清单"].map((item) => (
-              <div className="rounded-2xl bg-field p-5" key={item}>
-                <p className="text-sm font-extrabold text-ink">{item}</p>
+              <div className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-5" key={item}>
+                <p className="text-sm font-semibold text-ink">{item}</p>
                 <p className="mt-3 text-xs leading-5 text-muted">Ready for internal communication.</p>
               </div>
             ))}
@@ -168,12 +168,12 @@ function WorkspaceCard({
   children: ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-4xl rounded-[28px] bg-white p-6 shadow-soft ring-1 ring-black/[0.04] sm:p-8">
-      <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">{eyebrow}</p>
-      <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-5xl">{title}</h2>
-      <p className="mt-4 max-w-2xl text-sm leading-7 text-muted sm:text-base">{description}</p>
-      <div className="mt-8">{children}</div>
-      <button className="btn-primary mt-8" data-testid={testId} onClick={onAction} type="button">
+    <div className="rounded-xl border border-[#E8E8E8] bg-white p-6 sm:p-8">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-logo-green">{eyebrow}</p>
+      <h2 className="mt-4 text-2xl font-semibold leading-tight text-ink sm:text-4xl">{title}</h2>
+      <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">{description}</p>
+      <div className="mt-6">{children}</div>
+      <button className="btn-primary mt-6" data-testid={testId} onClick={onAction} type="button">
         {action}
       </button>
     </div>
@@ -182,22 +182,22 @@ function WorkspaceCard({
 
 function InfoField({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-field p-4">
-      <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted">{label}</p>
-      <p className="mt-2 text-base font-extrabold text-ink">{value}</p>
+    <div className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">{label}</p>
+      <p className="mt-2 text-base font-semibold text-ink">{value}</p>
     </div>
   );
 }
 
 function PlanPreview({ project, tier }: { project: Project; tier: string }) {
   return (
-    <div className="rounded-2xl bg-field p-5">
-      <p className="text-xs font-bold uppercase tracking-[0.1em] text-logo-green">{tier}</p>
-      <p className="mt-3 text-lg font-extrabold text-ink">{project.plan.title}</p>
+    <div className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-5">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-logo-green">{tier}</p>
+      <p className="mt-3 text-lg font-semibold text-ink">{project.plan.title}</p>
       <p className="mt-3 text-sm leading-7 text-muted">{project.plan.summary}</p>
       <div className="mt-5 grid gap-2">
         {project.plan.sections.map((section) => (
-          <p className="rounded-xl bg-white px-4 py-3 text-sm font-bold text-leaf-dark" key={section}>{section}</p>
+          <p className="rounded-xl border border-[#E8E8E8] bg-white px-4 py-3 text-sm font-medium text-ink" key={section}>{section}</p>
         ))}
       </div>
     </div>
@@ -206,13 +206,13 @@ function PlanPreview({ project, tier }: { project: Project; tier: string }) {
 
 function AdvancedPlanPreview() {
   return (
-    <div className="rounded-2xl bg-[#F8F4EC] p-5 ring-1 ring-sand-soft">
-      <p className="text-xs font-bold uppercase tracking-[0.1em] text-leaf-dark">Advanced Plan</p>
-      <p className="mt-3 text-lg font-extrabold text-ink">Pro 增强方案</p>
+    <div className="rounded-xl border border-[#E8E8E8] bg-white p-5">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-logo-green">Advanced Plan</p>
+      <p className="mt-3 text-lg font-semibold text-ink">Pro 增强方案</p>
       <p className="mt-3 text-sm leading-7 text-muted">在 Basic Plan 基础上补充多方案对比、设备选型计算、成本模型和达标风险分析。</p>
       <div className="mt-5 grid gap-2">
         {["多路线对比", "设备选型建议", "CAPEX / OPEX", "达标风险矩阵", "自动复核建议"].map((section) => (
-          <p className="rounded-xl bg-white px-4 py-3 text-sm font-bold text-leaf-dark" key={section}>{section}</p>
+          <p className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] px-4 py-3 text-sm font-medium text-ink" key={section}>{section}</p>
         ))}
       </div>
     </div>
@@ -221,8 +221,8 @@ function AdvancedPlanPreview() {
 
 function UpgradeInsightCard({ title, description }: { title: string; description: string }) {
   return (
-    <div className="mt-5 rounded-2xl bg-[#F8F4EC] p-5 ring-1 ring-sand-soft">
-      <p className="text-sm font-extrabold text-leaf-dark">{title}</p>
+    <div className="mt-5 rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] p-5">
+      <p className="text-sm font-semibold text-logo-green">{title}</p>
       <p className="mt-2 text-sm leading-7 text-muted">{description}</p>
     </div>
   );
@@ -242,17 +242,17 @@ function RoleViewPanel({ role, title, note, language }: { role: WorkspaceRole; t
   const content = language === "cn" ? cnContent : enContent;
 
   return (
-    <div className="mx-auto mt-5 max-w-4xl rounded-[24px] bg-white p-5 shadow-soft ring-1 ring-black/[0.04]">
+    <div className="rounded-xl border border-[#E8E8E8] bg-white p-5">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-extrabold text-ink">{title}</p>
+          <p className="text-sm font-semibold text-ink">{title}</p>
           <p className="mt-1 text-xs leading-5 text-muted">{note}</p>
         </div>
-        <span className="rounded-full bg-field px-3 py-1.5 text-xs font-bold uppercase text-leaf-dark">{role}</span>
+        <span className="rounded-full border border-[#E8E8E8] bg-[#F6F7F8] px-3 py-1.5 text-xs font-semibold uppercase text-muted">{role}</span>
       </div>
       <div className="mt-4 grid gap-2 sm:grid-cols-4">
         {content.map((item) => (
-          <p className="rounded-xl bg-field px-4 py-3 text-xs font-bold text-muted" key={item}>{item}</p>
+          <p className="rounded-xl border border-[#E8E8E8] bg-[#F6F7F8] px-4 py-3 text-xs font-medium text-muted" key={item}>{item}</p>
         ))}
       </div>
     </div>

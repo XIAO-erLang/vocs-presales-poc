@@ -59,7 +59,7 @@ export function WorkspaceShell({ initialProject }: { initialProject: Project }) 
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F6F7F8]">
       <ProjectHeader
         autoAdvance={autoAdvance}
         language={language}
@@ -70,7 +70,7 @@ export function WorkspaceShell({ initialProject }: { initialProject: Project }) 
         project={projectWithStep}
         role={role}
       />
-      <div className="flex flex-col lg:flex-row">
+      <main className="mx-auto grid w-full max-w-6xl gap-4 px-4 py-6 sm:px-6 lg:px-8">
         <StepSidebar currentStep={currentStep} completedSteps={completedSteps} onSelectStep={setCurrentStep} />
         <WorkspaceCanvas
           currentStep={currentStep}
@@ -84,7 +84,7 @@ export function WorkspaceShell({ initialProject }: { initialProject: Project }) 
           language={language}
         />
         <WorkspaceAssistant currentStep={currentStep} language={language} onOpenTool={setDrawerTool} project={projectWithStep} role={role} />
-      </div>
+      </main>
       <RightDrawer open={Boolean(drawerTool)} onClose={() => setDrawerTool(null)} onUseResult={addToolResult} tool={drawerTool} />
     </div>
   );
