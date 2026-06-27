@@ -3,24 +3,6 @@
 import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/LogoMark";
 
-const SPLASH_STORAGE_KEY = "yuanjie-env-splash-v2-seen";
-
-function hasSeenSplash() {
-  try {
-    return window.sessionStorage.getItem(SPLASH_STORAGE_KEY) === "true";
-  } catch {
-    return false;
-  }
-}
-
-function markSplashSeen() {
-  try {
-    window.sessionStorage.setItem(SPLASH_STORAGE_KEY, "true");
-  } catch {
-    // Storage can be unavailable in strict privacy modes; the animation should still complete.
-  }
-}
-
 export function SplashScreen() {
   const [visible, setVisible] = useState(true);
   const [entered, setEntered] = useState(false);
@@ -29,12 +11,11 @@ export function SplashScreen() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (prefersReducedMotion || hasSeenSplash()) {
+    if (prefersReducedMotion) {
       setVisible(false);
       return;
     }
 
-    markSplashSeen();
     setVisible(true);
 
     const frame = window.requestAnimationFrame(() => {
