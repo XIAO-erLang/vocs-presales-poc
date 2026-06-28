@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { SplashScreen } from "@/components/SplashScreen";
 import "./globals.css";
 
@@ -19,8 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN">
       <body>
-        <SplashScreen />
-        {children}
+        <LanguageProvider>
+          <SplashScreen />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

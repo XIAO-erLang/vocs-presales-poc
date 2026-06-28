@@ -6,6 +6,7 @@ import { RightDrawer } from "@/components/workspace/RightDrawer";
 import { StepSidebar } from "@/components/workspace/StepSidebar";
 import { WorkspaceAssistant } from "@/components/workspace/WorkspaceAssistant";
 import { WorkspaceCanvas } from "@/components/workspace/WorkspaceCanvas";
+import { useSiteLanguage } from "@/components/LanguageProvider";
 import type { AiMode, Project, WorkspaceLanguage, WorkspaceRole, WorkspaceStep } from "@/lib/workspace";
 import { workspaceTools } from "@/lib/workspace";
 
@@ -20,12 +21,13 @@ const nextStepMap: Record<WorkspaceStep, WorkspaceStep> = {
 };
 
 export function WorkspaceShell({ initialProject }: { initialProject: Project }) {
+  const { language: siteLanguage, setLanguage: setSiteLanguage } = useSiteLanguage();
   const [project, setProject] = useState<Project>(initialProject);
   const [currentStep, setCurrentStep] = useState<WorkspaceStep>(initialProject.currentStep);
   const [completedSteps, setCompletedSteps] = useState<WorkspaceStep[]>([]);
   const [drawerTool, setDrawerTool] = useState<WorkspaceTool | null>(null);
   const [role, setRole] = useState<WorkspaceRole>("customer");
-  const [language, setLanguage] = useState<WorkspaceLanguage>("cn");
+  const language: WorkspaceLanguage = siteLanguage === "zh" ? "cn" : "en";
   const [autoAdvance, setAutoAdvance] = useState(true);
 
   const projectWithStep = useMemo(() => ({ ...project, currentStep }), [currentStep, project]);
@@ -58,6 +60,10 @@ export function WorkspaceShell({ initialProject }: { initialProject: Project }) 
     setProject({ ...initialProject, results: [] });
   }
 
+  function updateLanguage(nextLanguage: WorkspaceLanguage) {
+    setSiteLanguage(nextLanguage === "cn" ? "zh" : "en");
+  }
+
   return (
     <div className="min-h-screen bg-[#F6F7F8]">
       <ProjectHeader
@@ -65,7 +71,7 @@ export function WorkspaceShell({ initialProject }: { initialProject: Project }) 
         language={language}
         onAutoAdvanceChange={setAutoAdvance}
         onModeChange={(mode: AiMode) => setProject((item) => ({ ...item, aiMode: mode, planTier: mode === "manual" ? "Free" : mode === "assisted" ? "Pro" : "Studio" }))}
-        onLanguageChange={setLanguage}
+        onLanguageChange={updateLanguage}
         onRoleChange={setRole}
         project={projectWithStep}
         role={role}
