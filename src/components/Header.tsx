@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-20 border-b border-[#E5E5E5] bg-white/90 backdrop-blur-xl">
       <div className="container-page flex flex-col gap-2 py-2 lg:flex-row lg:items-center lg:justify-between lg:gap-3 lg:py-2.5">
         <Link className="flex min-w-0 items-center gap-3" href="/">
-          <LogoMark className="h-8 w-8 shrink-0 text-logo-green sm:h-9 sm:w-9" />
+          <LogoMark className="h-8 w-8 shrink-0 text-[#B9976B] sm:h-9 sm:w-9" />
           <span className="min-w-0">
             <strong className="block truncate text-base font-black leading-tight text-ink">源解环保</strong>
             <span className="hidden truncate text-xs font-normal leading-tight text-muted sm:block sm:text-sm">SourceLink Env</span>

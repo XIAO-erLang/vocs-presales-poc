@@ -65,7 +65,7 @@ export default function HomePage() {
               V1 内测中 / 正式上线前暂不开放公开增长入口
             </div>
             <div className="mb-8 flex items-center gap-4">
-              <LogoMark className="h-12 w-12 text-logo-green sm:h-14 sm:w-14" />
+              <LogoMark className="h-12 w-12 text-[#B9976B] sm:h-14 sm:w-14" />
               <div className="text-left">
                 <p className="text-sm font-bold uppercase tracking-[0.1em] text-logo-green">SourceLink Env</p>
                 <p className="mt-1 text-sm text-muted">Product Platform for Environmental Engineering</p>
@@ -140,7 +140,7 @@ export default function HomePage() {
         <footer className="bg-ink py-12 text-white">
           <div className="container-page flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              <LogoMark className="h-12 w-12 shrink-0 text-white" />
+              <LogoMark className="h-12 w-12 shrink-0 text-[#B9976B]" />
               <div>
                 <p className="text-lg font-black">源解环保</p>
                 <p className="text-sm text-[#BDBDBD]">Environmental Engineering Operating System</p>
