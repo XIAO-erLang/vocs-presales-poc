@@ -20,7 +20,7 @@ const config: Config = {
         amber: "#B9976B",
         danger: "#D95C44",
         success: "#6E8F76",
-        "logo-green": "#7A8463",
+        "logo-green": "#B9976B",
         "cta-hover": "#A78356",
         hint: "#F8F8F6",
         "hover-warm": "#FFFCF8",
