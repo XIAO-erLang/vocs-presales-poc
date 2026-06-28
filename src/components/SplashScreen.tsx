@@ -45,7 +45,7 @@ export function SplashScreen() {
 
   return (
     <div className="fixed inset-0 z-[100] grid place-items-center bg-white" aria-hidden="true">
-      <LogoMark className={`h-24 w-24 text-logo-green transition-all ease-out sm:h-28 sm:w-28 ${logoState}`} />
+      <LogoMark className={`h-24 w-24 text-[#B9976B] transition-all ease-out sm:h-28 sm:w-28 ${logoState}`} />
     </div>
   );
 }
