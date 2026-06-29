@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AuthProvider } from "@/components/AuthProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SplashScreen } from "@/components/SplashScreen";
 import "./globals.css";
@@ -21,8 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN">
       <body>
         <LanguageProvider>
-          <SplashScreen />
-          {children}
+          <AuthProvider>
+            <SplashScreen />
+            {children}
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>
