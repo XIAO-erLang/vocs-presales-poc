@@ -26,7 +26,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-[#E5E5E5] bg-white/90 backdrop-blur-xl">
       <div className="container-page flex flex-col gap-2 py-2 lg:flex-row lg:items-center lg:justify-between lg:gap-3 lg:py-2.5">
-        <Link className="flex min-w-0 items-center gap-1.5" href="/">
+        <Link className="flex min-w-[190px] items-center gap-1.5 xl:min-w-[210px]" href="/">
           <LogoMark className="h-9 w-9 shrink-0 text-[#B9976B] sm:h-10 sm:w-10" />
           <span className="min-w-0">
             <strong className="block truncate text-base font-black leading-tight text-ink">{t({ zh: "源解环保", en: "SourceLink Env" })}</strong>
@@ -35,7 +35,7 @@ export function Header() {
             </span>
           </span>
         </Link>
-        <div className="flex min-w-0 items-center gap-2 overflow-hidden">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 overflow-hidden">
           <nav className="flex gap-0.5 overflow-hidden lg:gap-1" aria-label={t({ zh: "主导航", en: "Primary navigation" })}>
             {navItems.map((item) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -61,7 +61,7 @@ export function Header() {
             })}
           </nav>
           <Link
-            className="shrink-0 rounded-full border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition hover:border-sand-soft hover:bg-hover-warm hover:text-leaf-dark"
+            className="shrink-0 rounded-full border border-line bg-white px-2.5 py-1.5 text-xs font-bold text-ink transition hover:border-sand-soft hover:bg-hover-warm hover:text-leaf-dark xl:px-3"
             href={user ? "/account" : "/login"}
           >
             {user ? t({ zh: "我的账户", en: "Account" }) : t({ zh: "登录 / 注册", en: "Log In" })}
